@@ -10,7 +10,7 @@ class TodosController extends Controller
     /*INDEX: para mostrar todos los elementos
     store para guardar una tarea
     update par aactualizar
-    destroy para eliminar
+    delete para eliminar
     edit para mostrar el formulario*/
 
     public function store(Request $request){
@@ -26,6 +26,20 @@ class TodosController extends Controller
         $newTodo->save();
 
         // en route se debe redirigir al nombre asignado con "name" de la ruta
-        return redirect()->route('Start')->with('succes','Tarea creada exitosamente.');
+        return redirect()->route('index')->with('succes','Tarea creada exitosamente.');
+    }
+
+    public function index(){
+        // los dobles puntos es para acceder a un método estático
+        $tasks = Todo::all();
+        // saved tasks es la variable que manda la funcón index para usar en la vista
+        return view('tasks/index', ['saved_tasks' => $tasks]);
+    }
+
+    public function delete(){
+        $temporal = $tarea;
+        $tarea->delete();
+        $tasks = Todo::all();
+        return view('tasks/index', ['saved_tasks' => $tasks]);
     }
 }

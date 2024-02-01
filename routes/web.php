@@ -17,8 +17,14 @@ use App\Http\Controllers\TodosController;
 /* se está llamando a un método estático
 eso significan los :: */
 
-Route::get('/', function () {
-    return view('tasks/index');
-})->name('Start');
+// Esto era temporal antes de la existencia del método index quien
+// devolvía la vista "tasks/index"
 
-Route::post('/createtodo', [TodosController::class, 'store']);
+// Route::get('/', function () {
+//     return view('tasks/index');
+// })->name('Start');
+
+Route::get('/', [TodosController::class, 'index'])->name('index');
+Route::post('/', [TodosController::class, 'store'])->name('add-todo');
+Route::patch('/', [TodosController::class, 'index'])->name('todos-edit');
+Route::delete('/', [TodosController::class, 'delete'])->name('delete-todos');
