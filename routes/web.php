@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,7 @@ use Illuminate\Support\Facades\Route;
 eso significan los :: */
 
 Route::get('/', function () {
-    return view('app');
-});
+    return view('tasks/index');
+})->name('Start');
+
+Route::post('/createtodo', [TodosController::class, 'store']);
