@@ -11,6 +11,12 @@ body{
 	border-radius: 4px;
 }
 
-a{
+a {
+	text-decoration: none;
+}
+
+#task_container a {
+	color: green;
+	padding: 5px;
 	text-decoration: none;
 }

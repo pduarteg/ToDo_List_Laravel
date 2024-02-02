@@ -26,5 +26,8 @@ eso significan los :: */
 
 Route::get('/', [TodosController::class, 'index'])->name('index');
 Route::post('/', [TodosController::class, 'store'])->name('add-todo');
-Route::patch('/', [TodosController::class, 'index'])->name('todos-edit');
-Route::delete('/', [TodosController::class, 'delete'])->name('delete-todos');
+
+// se manda en la ruta una variable
+Route::get('/edit/{id}', [TodosController::class, 'show'])->name('edit-todo');
+Route::patch('/update/{id}', [TodosController::class, 'update'])->name('update-todo');
+Route::delete('/delete/{id}', [TodosController::class, 'delete'])->name('delete-todo');

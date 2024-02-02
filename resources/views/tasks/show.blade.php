@@ -14,7 +14,9 @@ Las migraciones hacen las consultas de la base de datos.
 
 @section('content')
 	<div class ="container w-25 border p-4 mt-4 	">
-		<form action="/", method="POST">
+		<!-- Nota: se usa el nombre "$to_show_task" porque así se mandó en el controlador. -->
+		<form action="{{ route('update-todo', ['id' => $to_show_task->id]) }}", method="POST">
+			@method('PATCH')
 			@csrf
 			<!-- configurando que se haya realizado exitosamente la acción -->
 			@if(session('succes'))
@@ -27,27 +29,9 @@ Las migraciones hacen las consultas de la base de datos.
 
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Título de la tarea</label>
-			  <input type="text" class="form-control" name="taskTitle" placeholder="Escribe aquí la nueva tarea">
+			  <input type="text" class="form-control" name="taskTitle" placeholder="Edita la tarea" value="{{ $to_show_task->title }}">
 			</div>
-			<button class="btn btn-primary" type="submit">Agregar tarea</button>
+			<button class="btn btn-primary" type="submit">Actualizar tarea</button>
 		</form>
-
-		<div>
-			<!-- Nota: saved_tasks se obtiene de la URL mientras que "tarea" se declara en el foreach -->
-			@foreach($saved_tasks as $tarea)
-				<div class="row py-1">
-					<div class = "col-md-9 d-flex align in-items-center" id="task_container">
-						<a href="{{ route('edit-todo', ['id' => $tarea->id]) }}">{{ $tarea->title }}</a>
-					</div>
-					<div class = "col-md-3 d-flex justify-content-end">
-						<form action = "{{ route('delete-todo', [$tarea->id]) }}" method="POST">
-							@method('DELETE')
-							@csrf
-							<button class = "btn btn-danger btn-sm">Eliminar</button>
-						</form>
-					</div>
-				</div>
-			@endforeach
-		</div>
 	</div>
 @endsection
