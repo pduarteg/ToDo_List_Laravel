@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodosController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,6 @@ Route::post('/', [TodosController::class, 'store'])->name('add-todo');
 Route::get('/edit/{id}', [TodosController::class, 'show'])->name('edit-todo');
 Route::patch('/update/{id}', [TodosController::class, 'update'])->name('update-todo');
 Route::delete('/delete/{id}', [TodosController::class, 'delete'])->name('delete-todo');
+
+// traemos las categorías como recursos
+Route::resource('categories', CategoriesController::class);

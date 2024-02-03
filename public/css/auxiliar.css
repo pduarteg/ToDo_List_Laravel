@@ -1,0 +1,28 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.color-container{
+	width: 19px;
+	height: 19px;
+	display: inline-block;
+	border-radius: 7px;
+	border-width: 2px;
+	border-color: #383838;
+}
+
+a {
+	text-decoration: none;
+}
+
+#task_container a {
+	text-decoration: none;
+}
+
+span.color-container {
+    border: 2px solid #BFBFBF; /* Grosor, estilo (solid) y color */
+    display: inline-block; /* Para que el borde envuelva el contenido */
+    padding-bottom: 2px; /* Ajusta el espacio entre el contenido y el borde */
+}

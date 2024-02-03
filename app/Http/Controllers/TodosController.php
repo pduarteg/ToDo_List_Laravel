@@ -14,6 +14,7 @@ class TodosController extends Controller
     edit para mostrar el formulario*/
 
     public function store(Request $request){
+        // El modelo es la base de datos (tabla);
         // el método validate hace que se cumplan los requerimientos
         $request->validate([
             // aquí indicamos que es obligatorio y un mínimo de 3 caracteres
