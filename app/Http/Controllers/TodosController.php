@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Models\Category;
 
 class TodosController extends Controller
 {
@@ -24,6 +25,7 @@ class TodosController extends Controller
 
         $newTodo = new Todo;
         $newTodo->title = $request->taskTitle;
+        $newTodo->category_id = $request->category_id;
         $newTodo->save();
 
         // en route se debe redirigir al nombre asignado con "name" de la ruta
@@ -33,8 +35,10 @@ class TodosController extends Controller
     public function index(){
         // los dobles puntos es para acceder a un método estático
         $tasks = Todo::all();
+        // agregamos categorías
+        $categories = Category::all();
         // saved tasks es la variable que manda la funcón index para usar en la vista
-        return view('tasks/index', ['saved_tasks' => $tasks]);
+        return view('tasks/index', ['saved_tasks' => $tasks, 'saved_categories' => $categories]);
     }
 
     // $id del parámetro es la variable mandada en la url

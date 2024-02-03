@@ -24,7 +24,34 @@
 				  <input type="color" class="form-control" name="categoryColor" value="{{ $sent_category->color }}">
 				</div>
 				<button class="btn btn-primary" type="submit">Actualizar categoría</button>
-			</form>			
+			</form>
+
+			<br>
+
+			<div>
+				<!-- tasks se refiere al método para Category creado en el modelo Category -->
+				<br>
+				@if($sent_category->tasks->count() > 0)
+					@foreach($sent_category->tasks as $task)
+						<div class = "row py-1">
+							<div class = "col-md-9 d-flex align-items-center">
+								<a href="{{ route('edit-todo', ['id' => $task->id]) }}">{{ $task->title }}</a>
+							</div>
+								<div class = "col-md-3 d-flex justify-content-end">
+								<form action = "{{ route('delete-todo', [$task->id])}}" method="POST">
+									@method('DELETE')
+									@csrf
+									<button class="btn btn-danger btn-sm">Eliminar</button>
+								</form>
+							</div>
+						</div>
+					@endforeach
+				@else
+
+					No hay tareas para esta categoría.
+
+				@endif
+			</div>
 		</div>
 	</div>
 @endsection

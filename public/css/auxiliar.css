@@ -8,7 +8,7 @@ body{
 	width: 19px;
 	height: 19px;
 	display: inline-block;
-	border-radius: 7px;
+	border-radius: 50%;
 	border-width: 2px;
 	border-color: #383838;
 }
@@ -22,7 +22,7 @@ a {
 }
 
 span.color-container {
-    border: 2px solid #BFBFBF; /* Grosor, estilo (solid) y color */
+    border: 1px solid #616161; /* Grosor, estilo (solid) y color */
     display: inline-block; /* Para que el borde envuelva el contenido */
-    padding-bottom: 2px; /* Ajusta el espacio entre el contenido y el borde */
+    /* padding-bottom: 2px; /* Ajusta el espacio entre el contenido y el borde */
 }

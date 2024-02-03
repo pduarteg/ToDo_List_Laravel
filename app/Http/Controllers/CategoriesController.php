@@ -31,7 +31,6 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         // Para guardar registros
-        echo "what? 1";
         $request->validate([
             // aquí validamos las columnas
             // las columnas se crean en la migración
@@ -55,7 +54,6 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
         $found_category = Category::find($id);
         //dd($found_category);
         return view('categories.show', ['sent_category' => $found_category]);
@@ -89,8 +87,13 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Una vez detectada la categoría se deben eliminar sus elementos
+        // correspondientes antes de eliminar la categoría
         $found_category = Category::find($id);
+        // recorremos todas las tareas relacionadas y eliminamos cada una
+        $found_category->tasks->each(function($task){
+            $task->delete();
+        });
         $found_category->delete();
 
         return redirect()->route('categories.index')->with('succes', 'Categoría eliminada');

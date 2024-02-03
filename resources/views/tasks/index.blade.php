@@ -29,9 +29,16 @@ Las migraciones hacen las consultas de la base de datos.
 			  <label for="exampleFormControlInput1" class="form-label">Título de la tarea</label>
 			  <input type="text" class="form-control" name="taskTitle" placeholder="Escribe aquí la nueva tarea">
 			</div>
+			<label for="category_id" class="form-label">Categoría de la tarea</label>
+			<select name = "category_id" class = "form-select">
+				@foreach($saved_categories as $category)
+					<option value = " {{ $category->id }} ">{{ $category->name }}</option>
+				@endforeach				
+			</select>
+			<br>
 			<button class="btn btn-primary" type="submit">Agregar tarea</button>
 		</form>
-
+		<br>
 		<div>
 			<!-- Nota: saved_tasks se obtiene de la URL mientras que "tarea" se declara en el foreach -->
 			@foreach($saved_tasks as $tarea)

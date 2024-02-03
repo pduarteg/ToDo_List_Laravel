@@ -16,7 +16,7 @@
 
 				<div class="mb-3">
 				  <label for="exampleFormControlInput1" class="form-label">Nombre de la categoría</label>
-				  <input type="text" class="form-control" name="categoryName" placeholder="Escribe aquí la nueva categoría">
+				  <input type="text" class="form-control" name="name" placeholder="Escribe aquí la nueva categoría">
 				</div>
 				<div class="mb-3">
 				  <label for="color" class="form-label">Color de la categoría</label>
@@ -54,10 +54,10 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				        <form action =" {{ route('categories.destroy' , ['category' => $i_category->id]) }} " method="POST">
+				        <form method="POST" action =" {{ route('categories.destroy' , ['category' => $i_category->id]) }} " method="POST">
 				        	@method('DELETE')
 				        	@csrf
-				        	<button type="button" class="btn btn-danger">Delete</button>	
+				        	<button type="submit" class="btn btn-danger">Delete</button>	
 				        </form>
 				      </div>
 				    </div>
